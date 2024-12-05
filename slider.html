@@ -1,0 +1,197 @@
+﻿<html>
+
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body
+{overflow-x:hidden;-webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none;}
+.slideholder{display:inline-flex;overflow:hidden;}
+.slideboxesspan{transition:0.4s;margin-left:8px;}
+.slideboxes{border:2px solid #000000;height:200px;width:280px;border-radius:18px;}
+.slideboxes:hover > .inboxdescribe{opacity:1;background-color:rgba(0,0,0,0.8);}
+.inboxdescribe{width:100%;height:100%;bottom:4px;padding-top:8px;opacity:0;color:#FFFFFF;transition:0.8s;
+border-radius:18px;}
+.inboxdescribebtnholder{width:0px;margin-top:105px;margin-left:-250px;}
+.inboxdescribebtndiv{width:80px;height:28px;background-color:#FF0000;color:#FFFFFF;padding-top:8px;
+border:2px solid #FFFFFF;transition:0.8s;}
+.inboxdescribebtndiv:hover{border-radius:18px;}
+
+@media only screen and (min-width: 300px) {
+.slideholder{width:300px;}
+}
+@media only screen and (min-width: 600px) {
+.slideholder{width:590px;}
+}
+@media only screen and (min-width: 900px) {
+.slideholder{width:880px;}
+}
+@media only screen and (min-width: 1200px) {
+.slideholder{width:1170px;}
+}
+</style>
+
+
+
+<script>
+
+var doslide=2;
+var mousepostmp;
+
+function getclickmousepos(){
+mousepostmp=event.clientX;
+}
+
+function getdropmousepos(){
+if(event.clientX > mousepostmp){slideright();}
+else if(event.clientX < mousepostmp){slideleft();}
+}
+
+function autoslideleft(){
+setInterval(function(){
+if(doslide){
+var arrel=document.getElementsByClassName("slideboxesspan");
+var len0=arrel.length;
+var x=arrel[0].offsetWidth;
+arrel[0].style.marginLeft=(x*-1)+"px";
+setTimeout(function(){
+arrel[0].style.marginLeft="0px";
+document.getElementById("slideholderid").appendChild(arrel[0]);
+for(var t=0;t<len0;t++){arrel[t].style.marginLeft="8px";}
+},400);
+}
+},2000);
+}
+
+function slideleft(){ 
+var arrel=document.getElementsByClassName("slideboxesspan");
+var len0=arrel.length;
+var x=arrel[0].offsetWidth;
+arrel[0].style.marginLeft=(x*-1)+"px";
+setTimeout(function(){
+arrel[0].style.marginLeft="0px";
+document.getElementById("slideholderid").appendChild(arrel[0]);
+for(var t=0;t<len0;t++){arrel[t].style.marginLeft="8px";}
+},400);
+}
+
+function slideright(){
+var arrel=document.getElementsByClassName("slideboxesspan");
+var containing=document.getElementById("slideholderid");
+var len0=arrel.length;
+var x=arrel[0].offsetWidth; 
+var newel="<span class='slideboxesspan' style='transition:0.4s;margin-left:"+(x*-1)+"px;'>"+arrel[len0-1].innerHTML+"</span>";
+containing.removeChild(arrel[len0-1]);
+containing.innerHTML=newel+containing.innerHTML;
+var arrel=document.getElementsByClassName("slideboxesspan");
+setTimeout(function(){arrel[0].style.marginLeft=(0)+"px";
+for(var t=0;t<len0;t++){arrel[t].style.marginLeft="8px";}
+},50);
+}
+
+function slideact(st){
+doslide=st;
+}
+
+function startonload(){
+autoslideleft();
+}
+
+</script>
+
+</head>
+
+
+<body onload="startonload();">
+
+<div style="height:30%;"></div>
+
+<div align="center">
+<div id="slideholderid" align="center" class="slideholder" onmouseover="slideact(0);" onmouseout="slideact(2);" 
+onclick="" onmousedown="getclickmousepos();" onmouseup="getdropmousepos();">
+
+<span class="slideboxesspan">
+<div align="center" class="slideboxes" style="background:url('3.jpg');background-size:cover;">
+<div class="inboxdescribe">Text 1 here.
+
+<div class="inboxdescribebtnholder">
+<a href="www.google.com" style="text-decoration:none;">
+<div class="inboxdescribebtndiv">more</div>
+</a>
+</div>
+</div>
+</div>
+</span>
+
+<span class="slideboxesspan">
+<div align="center" class="slideboxes" style="background:url('4.jpg');background-size:cover;">
+<div class="inboxdescribe">Text 2 here.
+
+<div class="inboxdescribebtnholder">
+<a href="www.google.com" style="text-decoration:none;">
+<div class="inboxdescribebtndiv">more</div>
+</a>
+</div>
+</div>
+</div>
+</span>
+
+<span class="slideboxesspan">
+<div align="center" class="slideboxes" style="background:url('5.jpg');background-size:cover;">
+<div class="inboxdescribe">Text 3 here.
+
+<div class="inboxdescribebtnholder">
+<a href="www.google.com" style="text-decoration:none;">
+<div class="inboxdescribebtndiv">more</div>
+</a>
+</div>
+</div>
+</div>
+</span>
+
+<span class="slideboxesspan">
+<div align="center" class="slideboxes" style="background:url('2.jpg');background-size:cover;">
+<div class="inboxdescribe">Text 4 here.
+
+<div class="inboxdescribebtnholder">
+<a href="www.google.com" style="text-decoration:none;">
+<div class="inboxdescribebtndiv">more</div>
+</a>
+</div>
+</div>
+</div>
+</span>
+
+<span class="slideboxesspan">
+<div align="center" class="slideboxes" style="background:url('4.jpg');background-size:cover;">
+<div class="inboxdescribe">Text 5 here.
+
+<div class="inboxdescribebtnholder">
+<a href="www.google.com" style="text-decoration:none;">
+<div class="inboxdescribebtndiv">more</div>
+</a>
+</div>
+</div>
+</div>
+</span>
+
+<span class="slideboxesspan">
+<div align="center" class="slideboxes" style="background:url('5.jpg');background-size:cover;">
+<div class="inboxdescribe">Text 6 here.
+
+<div class="inboxdescribebtnholder">
+<a href="www.google.com" style="text-decoration:none;">
+<div class="inboxdescribebtndiv">more</div>
+</a>
+</div>
+</div>
+</div>
+</span>
+
+</div>
+</div>
+
+</body>
+
+</html>
